@@ -1,0 +1,11 @@
+version: "3"
+services:
+  jupyter:
+    build: .
+    image: macroDemo:v1
+    container_name: my_project_server
+    restart: always
+    ports:
+    - "8888:8888"
+    networks:
+      - default
