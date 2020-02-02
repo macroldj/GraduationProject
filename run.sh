@@ -1,4 +1,3 @@
-# boot application
 
 function build(){
     echo -e "\033[32m[ <<<< build project >>>> ]\033[0m"
