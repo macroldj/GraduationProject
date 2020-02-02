@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+# boot application
 
 function build(){
     echo -e "\033[32m[ <<<< build project >>>> ]\033[0m"
@@ -8,6 +10,7 @@ function build(){
 }
 
 function start(){
+    docker-compose down
     echo -e "\033[32m[ <<<< start service >>>> ]\033[0m"
     docker-compose build
     docker-compose up -d
