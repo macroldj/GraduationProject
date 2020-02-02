@@ -32,4 +32,5 @@ cd workspace
 git clone git@github.com:macroldj/GraduationProject.git
 # shellcheck disable=SC2164
 cd GraduationProject
+git pull
 bash run.sh start
