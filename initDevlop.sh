@@ -9,11 +9,13 @@ systemctl daemon-reload
 systemctl restart docker.service
 
 # 2. git
-# git 相关的配置请参考
+# git install
 yum install -y git
+# git 相关的配置请参考
 git config --global user.name "macroldj"
 git config --global user.email "macroldj@163.com"
-ssh-keygen -t rsa -C "macroldj@163.com"
+# 配置请参考
+# https://github.com/macroldj/architecture/issues/69
 
 #3. pip 安装y
 yum install python3-pip - y
