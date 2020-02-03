@@ -48,7 +48,8 @@ INSTALLED_APPS = [
     'DjangoUeditor',
     'xadmin',
     'crispy_forms',
-    'django.conf'
+    'django.conf',
+    'django_filters'
 ]
 
 MIDDLEWARE = [
@@ -160,6 +161,6 @@ STATICFILES_DIRS = (
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 
 REST_FRAMEWORK = {
-    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
-    'PAGE_SIZE':5,
+    'DEFAULT_SCHEMA_CLASS': 'rest_framework.schemas.AutoSchema',
+    'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend']
 }
