@@ -41,10 +41,14 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
-    'user',
-    'user_operation',
-    'trade',
-    'goods'
+    'user.apps.UserConfig',
+    'user_operation.apps.UserOperationConfig',
+    'trade.apps.TradeConfig',
+    'goods.apps.GoodsConfig',
+    'DjangoUeditor',
+    'xadmin',
+    'crispy_forms',
+    'django.conf'
 ]
 
 MIDDLEWARE = [
@@ -100,18 +104,17 @@ DATABASES = {
 # }
 
 # cache
-
-CACHES = {
-    "default": {
-        "BACKEND": "django_redis.cache.RedisCache",
-        "LOCATION": "redis://118.25.95.136:6379/0",
-        "OPTIONS": {
-            "CLIENT_CLASS": "django_redis.client.DefaultClient",
-            "CONNECTION_POOL_KWARGS": {"max_connections": 10, "decode_responses": True},
-            # "PASSWORD": ""
-        }
-    }
-}
+# CACHES = {
+#     "default": {
+#         "BACKEND": "django_redis.cache.RedisCache",
+#         "LOCATION": "redis://118.25.95.136:6379/0",
+#         "OPTIONS": {
+#             "CLIENT_CLASS": "django_redis.client.DefaultClient",
+#             "CONNECTION_POOL_KWARGS": {"max_connections": 10, "decode_responses": True},
+#             # "PASSWORD": ""
+#         }
+#     }
+# }
 
 # Password validation
 # https://docs.djangoproject.com/en/2.2/ref/settings/#auth-password-validators
