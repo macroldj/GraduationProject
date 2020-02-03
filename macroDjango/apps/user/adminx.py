@@ -12,8 +12,8 @@ class BaseSetting(object):
 
 
 class GlobalSettings(object):
-    site_title = "生鲜后台"
-    site_footer = "macroldj@163.com&&macroDjangoXadmin"
+    site_title = "后台管理"
+    site_footer = "macroldj@163.com&&macro"
     menu_style = "accordion"
 
 
