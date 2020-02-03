@@ -23,13 +23,13 @@ class BaseSetting(object):
 
 class GlobalSettings(object):
     site_title = "生鲜后台"
-    site_footer = "mxshop"
-    menu_style = "accordion" # 进行伸缩
+    site_footer = "macroldj@163.com&&macroDjangoXadmin"
+    menu_style = "accordion"
 
 
 class VerifyCodeAdmin(object):
     list_display = ['code', 'mobile', "add_time"]
-    model_icon = 'fa fa-address-book'
+    model_icon = 'fa fa-user'
 
 
 xadmin.site.register(VerifyCode, VerifyCodeAdmin)

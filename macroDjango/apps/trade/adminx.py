@@ -4,8 +4,10 @@ __author__ = 'bobby'
 import xadmin
 from .models import ShoppingCart, OrderInfo, OrderGoods
 
+
 class ShoppingCartAdmin(object):
     list_display = ["user", "goods", "nums", ]
+    model_icon = 'fa fa-shopping-cart'
 
 
 class OrderInfoAdmin(object):

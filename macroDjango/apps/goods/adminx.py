@@ -23,6 +23,8 @@ class GoodsAdmin(object):
     list_filter = ["name", "click_num", "sold_num", "fav_num", "goods_num", "market_price",
                    "shop_price", "is_new", "is_hot", "add_time", "category__name"]
     style_fields = {"goods_desc": "ueditor"}
+    model_icon = 'fa fa-camera-retro'
+
 
     class GoodsImagesInline(object):
         model = GoodsImage
