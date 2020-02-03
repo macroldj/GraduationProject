@@ -14,3 +14,6 @@ six==1.10.0
 requests
 xlwt
 xlsxwriter
+coreapi
+Pygments
+django-guardian

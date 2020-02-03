@@ -14,12 +14,19 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.conf.urls import url,include
-from django.contrib import admin
 from django.urls import path
-
+from macroDjango.settings import MEDIA_ROOT
+from django.views.static import serve
+from goods.views import GoodsList
+from rest_framework.documentation import include_docs_urls
 import xadmin
 
 urlpatterns = [
     path('xadmin/', xadmin.site.urls),
-    url(r'^api/', include('rest_framework.urls'))
+    url(r'^media/(?P<path>.*)$',serve,{"document_root": MEDIA_ROOT}),
+    url(r'^api/', include('rest_framework.urls')),
+
+    url(r'/',GoodsList.as_view(),name="goods_list"),
+    url(r'doc/', include_docs_urls(title="生鲜电商")),
+    url(r'^api-auth/', include('rest_framework.urls'))
 ]
