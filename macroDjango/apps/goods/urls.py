@@ -6,6 +6,7 @@ import goods
 from .views import GoodsListViewSet , CategoryViewset , BannerViewset , IndexCategoryViewset , HotSearchsViewset
 
 router = DefaultRouter()
+
 # 电商的商品列表
 router.register(r'goods', GoodsListViewSet, basename="goodList")
 
