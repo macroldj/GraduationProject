@@ -21,7 +21,6 @@ class StandardResultsSetPagination(PageNumberPagination):
     max_page_size = 100
 
 
-
 class GoodsListViewSet(mixins.ListModelMixin, viewsets.GenericViewSet):
     """
     商品列表页， 分页， 搜索， 过滤， 排序

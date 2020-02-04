@@ -6,9 +6,10 @@ from django.db import models
 # Create your models here.
 from goods.models import Goods
 
+
 class ShoppingCart(models.Model):
     """
-    购物车
+    购物车表
     """
     user = models.ForeignKey(User, verbose_name=u"用户",on_delete=models.CASCADE)
     goods = models.ForeignKey(Goods, verbose_name=u"商品",on_delete=models.CASCADE)
@@ -27,7 +28,7 @@ class ShoppingCart(models.Model):
 
 class OrderInfo(models.Model):
     """
-    订单
+    订单表
     """
     ORDER_STATUS = (
         ("TRADE_SUCCESS", "成功"),

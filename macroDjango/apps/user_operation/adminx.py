@@ -17,6 +17,7 @@ class UserAddressAdmin(object):
     list_display = ["signer_name", "signer_mobile", "district", "address"]
     model_icon = 'fa fa-square'
 
+
 xadmin.site.register(UserFav, UserFavAdmin)
 xadmin.site.register(UserAddress, UserAddressAdmin)
 xadmin.site.register(UserLeavingMessage, UserLeavingMessageAdmin)
