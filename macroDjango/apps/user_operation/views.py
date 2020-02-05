@@ -4,9 +4,8 @@ from rest_framework import mixins
 
 from .models import UserAddress, UserFav, UserLeavingMessage, User
 from .serializers import UserSerializers,UserFavSerializers,UserAddressSerializers,UserLeavingMessageSerializers
-
+from goods.serializers import GoodsSerializers
 # Create your views here.
-
 
 class UserViewSets(mixins.ListModelMixin,viewsets.GenericViewSet):
     """
@@ -16,7 +15,7 @@ class UserViewSets(mixins.ListModelMixin,viewsets.GenericViewSet):
     serializer_class = UserSerializers
 
 
-class UserFavViewSets(mixins.ListModelMixin,viewsets.GenericViewSet):
+class UserFavViewSets(mixins.CreateModelMixin,viewsets.GenericViewSet):
     """
     用户收藏
     """

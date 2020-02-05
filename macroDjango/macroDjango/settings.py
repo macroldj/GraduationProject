@@ -14,6 +14,8 @@ import os
 import sys
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
+import datetime
+
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0,BASE_DIR)
 sys.path.insert(0,os.path.join(BASE_DIR,'apps'))
@@ -49,7 +51,8 @@ INSTALLED_APPS = [
     'xadmin',
     'crispy_forms',
     'django.conf',
-    'django_filters'
+    'django_filters',
+    'rest_framework.authtoken'
 ]
 
 MIDDLEWARE = [
@@ -162,5 +165,39 @@ MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 
 REST_FRAMEWORK = {
     'DEFAULT_SCHEMA_CLASS': 'rest_framework.schemas.AutoSchema',
-    'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend']
+    'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend'],
+
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework_jwt.authentication.JSONWebTokenAuthentication',
+        # 'rest_framework.authentication.BasicAuthentication',
+        # 'rest_framework.authentication.SessionAuthentication',
+        # 'rest_framework.authentication.TokenAuthentication',
+    ]
 }
+
+# jwt载荷中的有效期设置
+JWT_AUTH = {
+    #token 有效期
+    'JWT_EXPIRATION_DELTA': datetime.timedelta(hours=8),
+    'JWT_ALLOW_REFRESH': True,
+     #续期有效期（该设置可在24小时内带未失效的token 进行续期）
+    'JWT_REFRESH_EXPIRATION_DELTA': datetime.timedelta(hours=24),
+    # 自定义返回格式，需要手工创建
+    # 'JWT_RESPONSE_PAYLOAD_HANDLER': 'user.utils.jwt_response_payload_handler',
+     'AUTHENTICATION_BACKENDS': 'user.utils.CutomBackend',
+}
+
+# AUTHENTICATION_BACKENDS = (
+#     'user.views.CutomBackend',
+# )
+
+# 手机验证码正则表达式
+REGEX_MOBILE = "^1[358]\d{9}$|^147\d{8}$|^176\d{8}$"
+
+
+# 云片网设置
+API_KEY = "xasxaxaxasxasxas"
+
+# 阿里云支付接口
+ali_pub_key_path = os.path.join(BASE_DIR,"apps/utils/keys/alipay_key_2048.txt")
+private_key_path = os.path.join(BASE_DIR, "apps/utils/keys/private_2048.txt")

@@ -1,7 +1,7 @@
 from django.urls import include
 from rest_framework.routers import DefaultRouter
 from django.conf.urls import url
-from .views import ShoppingCartViewSet,OrderGoodsViewSet, OrderInfoViewSet
+from .views import ShoppingCartViewSet , OrderGoodsViewSet , OrderInfoViewSet , AlipayView
 
 router = DefaultRouter()
 # 购物车

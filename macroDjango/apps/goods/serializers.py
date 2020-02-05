@@ -1,7 +1,7 @@
 from django.db.models import Q
 from rest_framework import serializers
 
-from goods.models import Goods , GoodsCategory , HotSearchWords , Banner , GoodsCategoryBrand , IndexAd
+from goods.models import Goods , GoodsCategory , HotSearchWords , Banner , GoodsCategoryBrand , IndexAd, GoodsImage
 
 
 class GoodsCategorySerializers3(serializers.ModelSerializer):
@@ -24,11 +24,19 @@ class GoodsCategorySerializers(serializers.ModelSerializer):
         fields = "__all__"
 
 
+class ImageSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = GoodsImage
+        fields = ("image",)
+
+
 class GoodsSerializers(serializers.ModelSerializer):
     category = GoodsCategorySerializers()
+    images = ImageSerializer(many=True)
     class Meta:
         model = Goods
         fields = "__all__"
+
 
 class HotWordsSerializer(serializers.ModelSerializer):
     class Meta:
@@ -61,7 +69,6 @@ class IndexCategorySerializer(serializers.ModelSerializer):
             good_ins = ad_goods[0].goods
             goods_json = GoodsSerializers(good_ins, many=False, context={'request': self.context['request']}).data
         return goods_json
-
 
 
     def get_goods(self, obj):
