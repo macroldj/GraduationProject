@@ -14,8 +14,6 @@ urlpatterns = [
 
     # 业务api
     url(r'^v1/goods/', include('goods.urls', namespace='goods')),
-    url(r'^v1/trade/', include('trade.urls', namespace='trade')),
-    url(r'^v1/user_operation/', include('user_operation.urls', namespace='user_operation')),
     url(r'^v1/user/', include('user.urls', namespace='user')),
 
     # restful API
