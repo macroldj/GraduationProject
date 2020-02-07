@@ -22,24 +22,12 @@ class UserProfileserializers(serializers.ModelSerializer):
                                  help_text="验证码")
     username = serializers.CharField(label="用户名" , help_text="用户名" , required=True , allow_blank=False ,
                                      validators=[ UniqueValidator(queryset=User.objects.all() , message="用户已经存在") ])
-
+    email = serializers.CharField(label="email", help_text="邮件")
     password = serializers.CharField(
         style={'input_type': 'password'} , help_text="密码" , label="密码" , write_only=True ,
     )
 
-    # def create(self, validated_data):
-    #     user = super(UserRegSerializer, self).create(validated_data=validated_data)
-    #     user.set_password(validated_data["password"])
-    #     user.save()
-    #     return user
-
     def validate_code(self , code):
-        # try:
-        #     verify_records = VerifyCode.objects.get(mobile=self.initial_data["username"], code=code)
-        # except VerifyCode.DoesNotExist as e:
-        #     pass
-        # except VerifyCode.MultipleObjectsReturned as e:
-        #     pass
         verify_records = VerifyCode.objects.filter(mobile=self.initial_data[ "username" ]).order_by("-add_time")
         if verify_records:
             last_record = verify_records[ 0 ]
@@ -65,14 +53,13 @@ class UserProfileserializers(serializers.ModelSerializer):
 
 
 class VerifyCodeSerializers(serializers.Serializer):
-    mobile = serializers.CharField(max_length=11,min_length=11)
+    mobile = serializers.CharField(max_length=11,min_length=11, label="mobile", help_text="手机号码")
 
     def validated_mobile(self,mobile):
-
         """
         验证手机号码
         :param data:
-        :return:
+        :return: 进行验证码
         """
         # 手机是否注册
         if User.objects.filter(mobile=mobile).Count():
@@ -87,5 +74,3 @@ class VerifyCodeSerializers(serializers.Serializer):
         if VerifyCode.objects.filter(add_time__gt=one_mintes_age,mobile=mobile):
             raise serializers.ValidationError("太频繁了，时间没有超过60秒")
         return mobile
-
-
