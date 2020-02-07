@@ -3,4 +3,4 @@ from django.apps import AppConfig
 
 class UserConfig(AppConfig):
     name = 'user'
-    verbose_name = "用户信息"
+    verbose_name = "验证管理"

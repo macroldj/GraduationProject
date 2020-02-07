@@ -158,7 +158,7 @@ class BookmarkView(ModelAdminView):
 
 class BookmarkAdmin(object):
 
-    model_icon = 'fa fa-book'
+    model_icon = 'fa fa-books'
     list_display = ('title', 'user', 'url_name', 'query')
     list_display_links = ('title',)
     user_fields = ['user']
