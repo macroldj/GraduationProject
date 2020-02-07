@@ -7,6 +7,7 @@ from rest_framework.routers import DefaultRouter
 from macroDjango.settings import MEDIA_ROOT
 from django.views.static import serve
 from rest_framework.documentation import include_docs_urls
+
 import xadmin
 router = DefaultRouter()
 router.get_api_root_view()
@@ -18,6 +19,8 @@ urlpatterns = [
 
     # 业务api
     url(r'^user/', include('user.urls', namespace='user')),
+    url(r'^book/' , include('book.urls' , namespace='book')) ,
+
     # restful API
     url(r'' , include(router.urls)) ,
     url(r'^api-auth/', include('rest_framework.urls'),name="api-auth"),
