@@ -3,8 +3,6 @@
 
 import xadmin
 from xadmin import views
-from .models import VerifyCode
-
 
 class BaseSetting(object):
     enable_themes = True
@@ -22,6 +20,5 @@ class VerifyCodeAdmin(object):
     model_icon = 'fa fa-user'
 
 
-xadmin.site.register(VerifyCode, VerifyCodeAdmin)
 xadmin.site.register(views.BaseAdminView, BaseSetting)
 xadmin.site.register(views.CommAdminView, GlobalSettings)

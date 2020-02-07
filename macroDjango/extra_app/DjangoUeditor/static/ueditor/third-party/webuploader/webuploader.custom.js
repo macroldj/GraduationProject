@@ -5666,5 +5666,5 @@
     ], function( Base ) {
         return Base;
     });
-    return require('webuploader');
+    return require('DjangoUeditor/static/ueditor/third-party/webuploader/webuploader');
 });

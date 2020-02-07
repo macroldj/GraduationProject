@@ -6729,5 +6729,5 @@
     ], function( preset ) {
         return preset;
     });
-    return require('webuploader');
+    return require('DjangoUeditor/static/ueditor/third-party/webuploader/webuploader');
 });
