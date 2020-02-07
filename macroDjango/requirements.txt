@@ -19,3 +19,7 @@ Pygments
 django-guardian
 djangorestframework-jwt
 pycryptodome
+celery
+django-celery-results
+uwsgi
+redis

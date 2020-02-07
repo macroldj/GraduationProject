@@ -44,15 +44,14 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'user.apps.UserConfig',
-    'user_operation.apps.UserOperationConfig',
-    'trade.apps.TradeConfig',
-    'goods.apps.GoodsConfig',
     'DjangoUeditor',
     'xadmin',
     'crispy_forms',
     'django.conf',
     'django_filters',
-    'rest_framework.authtoken'
+    'rest_framework.authtoken',
+    'django_celery_results',
+    'book.apps.BookConfig',
 ]
 
 MIDDLEWARE = [
@@ -142,7 +141,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/2.2/topics/i18n/
 LANGUAGE_CODE = 'zh-hans'
-# TIME_ZONE = 'AsiaShanghai'
+TIME_ZONE='Asia/Shanghai'
 
 USE_I18N = True
 
@@ -201,3 +200,9 @@ API_KEY = "xasxaxaxasxasxas"
 # 阿里云支付接口
 ali_pub_key_path = os.path.join(BASE_DIR,"apps/utils/keys/alipay_key_2048.txt")
 private_key_path = os.path.join(BASE_DIR, "apps/utils/keys/private_2048.txt")
+
+
+# celery
+BROKER_BACKEND = 'redis'
+BROKER_URL = 'redis://localhost:6379/1'
+CELERY_RESULT_BACKEND = 'redis://localhost:6379/2'

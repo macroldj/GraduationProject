@@ -57,7 +57,7 @@ class VerifyCodeViewSet(mixins.CreateModelMixin, viewsets.GenericViewSet):
 
 class UserProfileViewsets(mixins.CreateModelMixin, viewsets.GenericViewSet):
     """
-
+    用户视图
     """
     queryset = UserProfile.objects.all()
     serializer_class = UserProfileserializers
