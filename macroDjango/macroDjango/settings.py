@@ -7,7 +7,7 @@ For more information on this file, see
 https://docs.djangoproject.com/en/2.2/topics/settings/
 
 For the full list of settings and their values, see
-https://docs.djangoproject.com/en/2.2/ref/settings/
+https://docs.djangoproject.com/en/2.2/ref/settings/s
 """
 
 import os
@@ -52,7 +52,7 @@ INSTALLED_APPS = [
     'crispy_forms',
     'django.conf',
     'django_filters',
-    'rest_framework.authtoken'
+    'rest_framework.authtoken',
 ]
 
 MIDDLEWARE = [
@@ -174,10 +174,10 @@ REST_FRAMEWORK = {
 
 # jwt载荷中的有效期设置
 JWT_AUTH = {
-    #token 有效期
+    # token 有效期
     'JWT_EXPIRATION_DELTA': datetime.timedelta(hours=8),
     'JWT_ALLOW_REFRESH': True,
-     #续期有效期（该设置可在24小时内带未失效的token 进行续期）
+     # 续期有效期（该设置可在24小时内带未失效的token 进行续期）
     'JWT_REFRESH_EXPIRATION_DELTA': datetime.timedelta(hours=24),
     # 自定义返回格式，需要手工创建
     # 'JWT_RESPONSE_PAYLOAD_HANDLER': 'user.utils.jwt_response_payload_handler',
