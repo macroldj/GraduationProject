@@ -18,8 +18,8 @@ import datetime
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0,BASE_DIR)
-sys.path.insert(0,os.path.join(BASE_DIR,'apps'))
-sys.path.insert(0,os.path.join(BASE_DIR,"extra_app"))
+sys.path.insert(0,os.path.join(BASE_DIR, 'apps'))
+sys.path.insert(0,os.path.join(BASE_DIR, "extra_app"))
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
@@ -142,7 +142,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/2.2/topics/i18n/
 LANGUAGE_CODE = 'zh-hans'
-# TIME_ZONE = 'AsiaShanghai'
+TIME_ZONE = 'AsiaShanghai'
 
 USE_I18N = True
 
@@ -169,9 +169,6 @@ REST_FRAMEWORK = {
 
     'DEFAULT_AUTHENTICATION_CLASSES': [
         'rest_framework_jwt.authentication.JSONWebTokenAuthentication',
-        # 'rest_framework.authentication.BasicAuthentication',
-        # 'rest_framework.authentication.SessionAuthentication',
-        # 'rest_framework.authentication.TokenAuthentication',
     ]
 }
 
@@ -196,7 +193,7 @@ REGEX_MOBILE = "^1[358]\d{9}$|^147\d{8}$|^176\d{8}$"
 
 
 # 云片网设置
-API_KEY = "xasxaxaxasxasxas"
+API_KEY = "Thisisyunpianwang"
 
 # 阿里云支付接口
 ali_pub_key_path = os.path.join(BASE_DIR,"apps/utils/keys/alipay_key_2048.txt")
