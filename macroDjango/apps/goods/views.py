@@ -1,9 +1,10 @@
+from drf_haystack.viewsets import HaystackViewSet
 from rest_framework.pagination import PageNumberPagination
 from rest_framework.response import Response
 
 from .filters import GoodsFilter
 from .serializers import GoodsSerializers , GoodsCategorySerializers , HotWordsSerializer , BannerSerializer , \
-    IndexCategorySerializer
+    IndexCategorySerializer , GoodsEsIndexSerializer
 from .models import Goods , GoodsCategory , HotSearchWords , Banner
 from rest_framework import mixins
 from rest_framework import viewsets
@@ -83,3 +84,12 @@ class IndexCategoryViewset(mixins.ListModelMixin, viewsets.GenericViewSet):
     queryset = GoodsCategory.objects.filter(is_tab=True, name__in=["生鲜食品", "酒水饮料"])
     serializer_class = IndexCategorySerializer
 
+
+
+class GoogsSearchViewSet(HaystackViewSet):
+    """
+    SKU搜索
+    """
+    index_models = [Goods]
+
+    serializer_class = GoodsEsIndexSerializer

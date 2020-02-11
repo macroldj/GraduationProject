@@ -1,7 +1,8 @@
 from django.db.models import Q
+from drf_haystack.serializers import HaystackSerializer
 from rest_framework import serializers
 
-from goods.models import Goods , GoodsCategory , HotSearchWords , Banner , GoodsCategoryBrand , IndexAd, GoodsImage
+from goods.models import Goods , GoodsCategory , HotSearchWords , Banner , GoodsCategoryBrand , IndexAd
 
 
 class GoodsCategorySerializers3(serializers.ModelSerializer):
@@ -24,19 +25,11 @@ class GoodsCategorySerializers(serializers.ModelSerializer):
         fields = "__all__"
 
 
-class ImageSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = GoodsImage
-        fields = ("image",)
-
-
 class GoodsSerializers(serializers.ModelSerializer):
     category = GoodsCategorySerializers()
-    images = ImageSerializer(many=True)
     class Meta:
         model = Goods
         fields = "__all__"
-
 
 class HotWordsSerializer(serializers.ModelSerializer):
     class Meta:
@@ -71,6 +64,7 @@ class IndexCategorySerializer(serializers.ModelSerializer):
         return goods_json
 
 
+
     def get_goods(self, obj):
         all_goods = Goods.objects.filter(Q(category_id=obj.id)|Q(category__parent_category_id=obj.id)|Q(category__parent_category__parent_category_id=obj.id))
         goods_serializer = GoodsSerializers(all_goods, many=True, context={'request': self.context['request']})
@@ -79,3 +73,13 @@ class IndexCategorySerializer(serializers.ModelSerializer):
     class Meta:
         model = GoodsCategory
         fields = "__all__"
+
+class GoodsEsIndexSerializer(HaystackSerializer):
+    """
+    SKU索引结果数据序列化器
+    """
+    object = GoodsCategorySerializers3(read_only=True)
+
+    class Meta:
+        index_classes = [Goods]
+        fields = ('text', 'object')

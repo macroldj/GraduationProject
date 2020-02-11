@@ -17,5 +17,5 @@ xlsxwriter
 coreapi
 Pygments
 django-guardian
-djangorestframework-jwt
-pycryptodome
+drf-haystack
+elasticsearch

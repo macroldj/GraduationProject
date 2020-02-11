@@ -33,3 +33,10 @@ services:
    - "3306:3306"
    restart: always
 
+  elasticsearch:
+    container_name: container_name:V1
+    image: delron/elasticsearch-ik:2.4.6-1.0
+
+  ports:
+  - 9200:9200
+  - 9300:9300

@@ -3,7 +3,8 @@ from rest_framework.routers import DefaultRouter
 from django.conf.urls import url
 
 import goods
-from .views import GoodsListViewSet , CategoryViewset , BannerViewset , IndexCategoryViewset , HotSearchsViewset
+from .views import GoodsListViewSet , CategoryViewset , BannerViewset , IndexCategoryViewset , HotSearchsViewset , \
+    GoogsSearchViewSet
 
 router = DefaultRouter()
 
@@ -22,6 +23,8 @@ router.register(r'indexgoods', IndexCategoryViewset, basename="indexgoods")
 # 查询热点内容
 router.register(r'hotsearchs', HotSearchsViewset, basename="hotsearchs")
 
+# es
+router.register('search', GoogsSearchViewSet, base_name='es_search')
 
 app_name = "goods"
 urlpatterns = [
