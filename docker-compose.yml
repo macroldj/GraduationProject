@@ -15,8 +15,8 @@ services:
 
   redis:
     image: redis:4.0.13 
-    container_name: redis
-    restart: always
+    container_name: django-redis
+    restart: always`
     command: --appendonly yes
     ports:
       - 6379:6379
