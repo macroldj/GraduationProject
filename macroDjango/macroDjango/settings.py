@@ -184,8 +184,9 @@ JWT_AUTH = {
 AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',
     'social_core.backends.weibo.WeiboOAuth2',
-    'social_core.backends.qq.QQOAuth2' ,
-    'social_core.backends.weixin.WeixinOAuth2' ,
+    'social_core.backends.qq.QQOAuth2',
+    'social_core.backends.weixin.WeixinOAuth2',
+    'social_core.backends.github.GithubOAuth2' ,
     # 'user.views.CutomBackend',
 )
 
@@ -211,6 +212,10 @@ SOCIAL_AUTH_QQ_SECRET = ''
 # 微信应用的key与secret
 SOCIAL_AUTH_WEIXIN_KEY = ''
 SOCIAL_AUTH_WEIXIN_SECRET = ''
+
+# github应用的key与secret
+SOCIAL_AUTH_GITHUB_KEY = ''
+SOCIAL_AUTH_GITHUB_SECRET = ''
 
 # 配置用户授权之后重定向跳转的url
 SOCIAL_AUTH_LOGIN_REDIRECT_URL = '/index/'
