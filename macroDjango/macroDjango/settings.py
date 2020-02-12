@@ -219,3 +219,12 @@ SOCIAL_AUTH_GITHUB_SECRET = ''
 
 # 配置用户授权之后重定向跳转的url
 SOCIAL_AUTH_LOGIN_REDIRECT_URL = '/index/'
+
+#微信登录支付相关配置，还有微信支付商户账号等
+WECHAT_TOKEN = ''
+EncodingAESKey =''
+WECHAT_APPID = ''
+WECHAT_SECRET=''
+WECHAT_MCH_ID=''
+WECHAT_API_KEY=''
+WECHAT_REDIRECT_URL=''

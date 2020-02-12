@@ -3,6 +3,10 @@ from datetime import datetime
 from django.shortcuts import render , redirect
 from rest_framework import mixins
 from rest_framework import viewsets
+from rest_framework.permissions import AllowAny
+from rest_framework.request import Request
+
+from .wxPay import WechatPaymentXMLParser , WechatPayXMLRender
 from .models import ShoppingCart, OrderGoods, OrderInfo
 from .serializers import ShoppingCartSerializers,OrderGoodsSerializers,OrderInfoSerializers
 
@@ -122,3 +126,29 @@ class AlipayView(APIView):
                 existed_order.save()
 
             return Response("success")
+
+
+class WeChatNotifyPayView(APIView):
+    """
+    微信支付回调接口
+    """
+    authentication_classes = []
+    permission_classes = (AllowAny,)
+    parser_classes = (WechatPaymentXMLParser, )
+    renderer_classes = (WechatPayXMLRender, )
+    # serializer_class = PayRecordSerializer
+    #
+    # def initialize_request(self, request, *args, **kwargs):
+    #     """
+    #     Returns the initial request object.
+    #     """
+    #     parser_context = self.get_parser_context(request)
+    #
+    #     return Request(
+    #         request,
+    #         parsers=self.get_parsers(),
+    #         authenticators=self.get_authenticators(),
+    #         negotiator=self.get_content_negotiator(),
+    #         parser_context=parser_context
+    #     )
+    pass
