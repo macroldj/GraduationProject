@@ -19,3 +19,4 @@ Pygments
 django-guardian
 djangorestframework-jwt
 pycryptodome
+social-auth-app-django

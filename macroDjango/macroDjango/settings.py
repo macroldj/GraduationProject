@@ -53,6 +53,7 @@ INSTALLED_APPS = [
     'django.conf',
     'django_filters',
     'rest_framework.authtoken',
+    'social_django',
 ]
 
 MIDDLEWARE = [
@@ -142,7 +143,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/2.2/topics/i18n/
 LANGUAGE_CODE = 'zh-hans'
-TIME_ZONE = 'AsiaShanghai'
+TIME_ZONE = 'Asia/Shanghai'
 
 USE_I18N = True
 
@@ -173,28 +174,43 @@ REST_FRAMEWORK = {
 }
 
 # jwt载荷中的有效期设置
+import datetime
 JWT_AUTH = {
-    # token 有效期
-    'JWT_EXPIRATION_DELTA': datetime.timedelta(hours=8),
-    'JWT_ALLOW_REFRESH': True,
-     # 续期有效期（该设置可在24小时内带未失效的token 进行续期）
-    'JWT_REFRESH_EXPIRATION_DELTA': datetime.timedelta(hours=24),
-    # 自定义返回格式，需要手工创建
-    # 'JWT_RESPONSE_PAYLOAD_HANDLER': 'user.utils.jwt_response_payload_handler',
-     'AUTHENTICATION_BACKENDS': 'user.utils.CutomBackend',
+    'JWT_EXPIRATION_DELTA': datetime.timedelta(days=7),
+    'JWT_AUTH_HEADER_PREFIX': 'JWT',
 }
 
-# AUTHENTICATION_BACKENDS = (
-#     'user.views.CutomBackend',
-# )
+
+AUTHENTICATION_BACKENDS = (
+    'django.contrib.auth.backends.ModelBackend',
+    'social_core.backends.weibo.WeiboOAuth2',
+    'social_core.backends.qq.QQOAuth2' ,
+    'social_core.backends.weixin.WeixinOAuth2' ,
+    # 'user.views.CutomBackend',
+)
 
 # 手机验证码正则表达式
 REGEX_MOBILE = "^1[358]\d{9}$|^147\d{8}$|^176\d{8}$"
 
-
 # 云片网设置
-API_KEY = "Thisisyunpianwang"
+API_KEY = "************"
 
 # 阿里云支付接口
 ali_pub_key_path = os.path.join(BASE_DIR,"apps/utils/keys/alipay_key_2048.txt")
 private_key_path = os.path.join(BASE_DIR, "apps/utils/keys/private_2048.txt")
+
+# 第三方登录的相关加密信息
+# 微博应用的key与secret
+SOCIAL_AUTH_WEIBO_KEY = ''
+SOCIAL_AUTH_WEIBO_SECRET = ''
+
+# QQ应用的key与secret
+SOCIAL_AUTH_QQ_KEY = ''
+SOCIAL_AUTH_QQ_SECRET = ''
+
+# 微信应用的key与secret
+SOCIAL_AUTH_WEIXIN_KEY = ''
+SOCIAL_AUTH_WEIXIN_SECRET = ''
+
+# 配置用户授权之后重定向跳转的url
+SOCIAL_AUTH_LOGIN_REDIRECT_URL = '/index/'

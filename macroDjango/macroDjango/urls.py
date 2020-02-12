@@ -33,4 +33,5 @@ urlpatterns = [
     # url(r'^api-token-auth/', views.obtain_auth_token), # 自带的token固定化
     url(r'^api-jwt-auth/' , obtain_jwt_token) , # jwt 插件安装的token
     url(r'^alipay/return/' , AlipayView, name='alipay'),
+    url('', include('social_django.urls' , namespace='social'))
 ]

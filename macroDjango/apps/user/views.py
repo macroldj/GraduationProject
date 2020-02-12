@@ -34,7 +34,6 @@ class VerifyCodeViewSet(mixins.CreateModelMixin, viewsets.GenericViewSet):
 
         return "".join(random_str)
 
-
     def create(self, request, *args, **kwargs):
         serializer = self.get_serializer(data=request.data)
         serializer.is_valid(raise_exception=True)
