@@ -1,11 +1,15 @@
 from django.shortcuts import render
 from rest_framework import viewsets
 from rest_framework import mixins
+from rest_framework.authentication import SessionAuthentication
+from rest_framework.permissions import IsAuthenticated,IsAuthenticatedOrReadOnly
+from rest_framework_jwt.authentication import JSONWebTokenAuthentication
 
 from .models import UserAddress, UserFav, UserLeavingMessage, User
 from .serializers import UserSerializers,UserFavSerializers,UserAddressSerializers,UserLeavingMessageSerializers
 from goods.serializers import GoodsSerializers
 # Create your views here.
+
 
 class UserViewSets(mixins.ListModelMixin,viewsets.GenericViewSet):
     """
@@ -15,25 +19,68 @@ class UserViewSets(mixins.ListModelMixin,viewsets.GenericViewSet):
     serializer_class = UserSerializers
 
 
-class UserFavViewSets(mixins.CreateModelMixin,viewsets.GenericViewSet):
+class UserFavViewSets(mixins.CreateModelMixin, mixins.ListModelMixin, mixins.RetrieveModelMixin,
+                     mixins.DestroyModelMixin, viewsets.GenericViewSet):
     """
-    用户收藏
+    list:
+        获取用户收藏列表
+    retrieve:
+        判断某个商品是否已经收藏
+    create:
+        收藏商品
     """
-    queryset = UserFav.objects.all()
-    serializer_class = UserFavSerializers
+    permission_classes = (IsAuthenticated)
+    authentication_classes = (JSONWebTokenAuthentication, SessionAuthentication)
+    lookup_field = "goods_id"
+
+    def get_queryset(self):
+        return UserFav.objects.filter(user=self.request.user)
+
+    # def perform_create(self, serializer):
+    #     instance = serializer.save()
+    #     goods = instance.goods
+    #     goods.fav_num += 1
+    #     goods.save()
+
+    def get_serializer_class(self):
+        if self.action == "list":
+            return UserFavSerializers
+        elif self.action == "create":
+            return UserFavSerializers
+        return UserFavSerializers
 
 
-class UserLeavingMessageViewSets(mixins.ListModelMixin,viewsets.GenericViewSet):
+class UserLeavingMessageViewSets(mixins.ListModelMixin, mixins.DestroyModelMixin, mixins.CreateModelMixin,
+                            viewsets.GenericViewSet):
     """
-    用户留言信息
+    list:
+        获取用户留言
+    create:
+        添加留言
+    delete:
+        删除留言功能
     """
-    queryset = UserLeavingMessage.objects.all()
+    permission_classes = (IsAuthenticated)
+    authentication_classes = (JSONWebTokenAuthentication , SessionAuthentication)
     serializer_class = UserLeavingMessageSerializers
+
+    def get_queryset(self):
+        return UserLeavingMessage.objects.filter(user=self.request.user)
 
 
 class UserAddressViewSets(mixins.ListModelMixin,viewsets.GenericViewSet):
     """
-    用户地址信息
+    收货地址管理
+    list:
+        获取收货地址
+    create:
+        添加收货地址
+    update:
+        更新收货地址
+    delete:
+        删除收货地址
     """
-    queryset = UserAddress.objects.all()
+
+    permission_classes = (IsAuthenticated)
+    authentication_classes = (JSONWebTokenAuthentication , SessionAuthentication)
     serializer_class = UserAddressSerializers

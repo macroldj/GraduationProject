@@ -11,7 +11,10 @@ from  rest_framework import serializers
 User = get_user_model()
 
 
-class UserProfileserializers(serializers.ModelSerializer):
+class UserRegSerializer(serializers.ModelSerializer):
+    '''
+        用户信息注册
+    '''
     code = serializers.CharField(required=True , write_only=True , max_length=4 , min_length=4 , label="验证码" ,
                                  error_messages={
                                      "blank": "请输入验证码" ,
@@ -72,7 +75,7 @@ class VerifyCodeSerializers(serializers.Serializer):
         """
         验证手机号码
         :param data:
-        :return:
+        :return: 手机验证码
         """
         # 手机是否注册
         if User.objects.filter(mobile=mobile).Count():
@@ -87,5 +90,3 @@ class VerifyCodeSerializers(serializers.Serializer):
         if VerifyCode.objects.filter(add_time__gt=one_mintes_age,mobile=mobile):
             raise serializers.ValidationError("太频繁了，时间没有超过60秒")
         return mobile
-
-

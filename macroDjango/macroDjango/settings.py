@@ -174,7 +174,7 @@ REST_FRAMEWORK = {
 }
 
 # jwt载荷中的有效期设置
-import datetime
+
 JWT_AUTH = {
     'JWT_EXPIRATION_DELTA': datetime.timedelta(days=7),
     'JWT_AUTH_HEADER_PREFIX': 'JWT',
@@ -220,7 +220,8 @@ SOCIAL_AUTH_GITHUB_SECRET = ''
 # 配置用户授权之后重定向跳转的url
 SOCIAL_AUTH_LOGIN_REDIRECT_URL = '/index/'
 
-#微信登录支付相关配置，还有微信支付商户账号等
+
+# 微信登录支付相关配置，还有微信支付商户账号等
 WECHAT_TOKEN = ''
 EncodingAESKey =''
 WECHAT_APPID = ''
