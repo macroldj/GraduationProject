@@ -5,10 +5,8 @@ from rest_framework.authentication import SessionAuthentication
 from rest_framework.permissions import IsAuthenticated,IsAuthenticatedOrReadOnly
 from rest_framework_jwt.authentication import JSONWebTokenAuthentication
 
-from .models import UserAddress, UserFav, UserLeavingMessage, User
+from .models import UserFav, UserLeavingMessage, User
 from .serializers import UserSerializers,UserFavSerializers,UserAddressSerializers,UserLeavingMessageSerializers
-from goods.serializers import GoodsSerializers
-# Create your views here.
 
 
 class UserViewSets(mixins.ListModelMixin,viewsets.GenericViewSet):
