@@ -7,6 +7,7 @@
 yum install -y docker
 systemctl daemon-reload
 systemctl restart docker.service
+pip3 install docker-compose
 
 # 2. git
 # git install

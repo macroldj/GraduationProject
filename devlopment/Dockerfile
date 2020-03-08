@@ -10,6 +10,6 @@ WORKDIR /home/workspace
 
 COPY . . 
 
-ADD macroDjango/requirements.txt /tmp/requirements.txt
+ADD ../macroDjango/requirements.txt /tmp/requirements.txt
 RUN pip3 install --no-cache-dir  -i https://mirrors.aliyun.com/pypi/simple/ --trusted-host mirrors.aliyun.com -r /tmp/requirements.txt && rm -rf /tmp/requirements.txt
 CMD ["sh","runserver.sh"]
