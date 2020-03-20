@@ -7,7 +7,7 @@ from .models import book
 
 class BookCodeAdmin(object):
     list_display = ['name','auther','mobile', "add_time"]
-    model_icon = 'fa fa-book'
+    model_icon = 'fa fa-city'
 
 
 xadmin.site.register(book, BookCodeAdmin)

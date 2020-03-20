@@ -13,5 +13,5 @@ router.register(r'postBook', BookPostViewSet, basename="bookInfo")
 
 app_name = "user"
 urlpatterns = [
-    url(r"^", include(router.urls), name="book"),
+    url(r"^", include(router.urls), name="city"),
 ]

@@ -51,7 +51,8 @@ INSTALLED_APPS = [
     'django_filters',
     'rest_framework.authtoken',
     'django_celery_results',
-    'book.apps.BookConfig',
+    'city.apps.BookConfig',
+    'attractions.apps.AttrConfig'
 ]
 
 MIDDLEWARE = [

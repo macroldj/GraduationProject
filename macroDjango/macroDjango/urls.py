@@ -19,13 +19,13 @@ urlpatterns = [
 
     # 业务api
     url(r'^user/', include('user.urls', namespace='user')),
-    url(r'^book/' , include('book.urls' , namespace='book')) ,
+    url(r'^city/' , include('city.urls' , namespace='city')) ,
 
     # restful API
     url(r'' , include(router.urls)) ,
     url(r'^api-auth/', include('rest_framework.urls'),name="api-auth"),
     url(r'^media/(?P<path>.*)$', serve, {"document_root": MEDIA_ROOT}),
-    url(r'^doc/', include_docs_urls(title="电商API"), name="doc"),
+    url(r'^doc/', include_docs_urls(title="旅游APP-API"), name="doc"),
     # url(r'^api-token-auth/', views.obtain_auth_token), # 自带的token固定化
     url(r'^api-jwt-auth/' , obtain_jwt_token), # jwt 插件安装的token
 ]

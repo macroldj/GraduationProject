@@ -2,5 +2,5 @@ from django.apps import AppConfig
 
 
 class BookConfig(AppConfig):
-    name = 'book'
-    verbose_name = "图书信息"
+    name = 'city'
+    verbose_name = "城市信息"
