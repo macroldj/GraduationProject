@@ -20,6 +20,7 @@ urlpatterns = [
     # 业务api
     url(r'^user/', include('user.urls', namespace='user')),
     url(r'^city/' , include('city.urls' , namespace='city')) ,
+    url(r'^attractions/', include('attractions.urls', namespace='attractions')),
 
     # restful API
     url(r'' , include(router.urls)) ,

@@ -4,6 +4,7 @@ from django.db import models
 
 # Create your models here.
 
+
 class Attractions(models.Model):
     name = models.CharField(max_length=20, verbose_name="景点名称")
     auther = models.CharField(max_length=10, verbose_name="地址")

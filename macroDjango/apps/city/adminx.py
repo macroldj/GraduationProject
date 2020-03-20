@@ -2,7 +2,7 @@
 # encoding: utf-8
 
 import xadmin
-from .models import book
+from .models import city
 
 
 class BookCodeAdmin(object):
@@ -10,4 +10,4 @@ class BookCodeAdmin(object):
     model_icon = 'fa fa-city'
 
 
-xadmin.site.register(book, BookCodeAdmin)
+xadmin.site.register(city, BookCodeAdmin)
