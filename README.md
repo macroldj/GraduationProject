@@ -5,7 +5,10 @@
 - [x] xadmin
 - [x] jwt用户认证
 - [x] user app
-- [x] drf doc
+- [x] drf api doc
+
+## 计划中
+- [x] 数据缓存
 
 # References
 - [DRF DOC](https://www.django-rest-framework.org/)
