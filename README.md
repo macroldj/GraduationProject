@@ -8,7 +8,8 @@
 - [x] drf api doc
 
 ## 计划中
-- [ ] 数据缓存
+- [ ] 数据设计
+- [ ] 缓存设计
 
 # References
 - [DRF DOC](https://www.django-rest-framework.org/)
