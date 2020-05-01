@@ -6,3 +6,7 @@ pillow
 coreapi
 six
 django-crispy-forms
+django-formtools
+httplib2
+django-import-export
+djangorestframework-jwt
