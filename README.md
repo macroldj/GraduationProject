@@ -6,9 +6,8 @@
 - [x] jwt用户认证
 - [x] user app
 - [x] drf api doc
-
+- [x] 数据设计
 ## 计划中
-- [ ] 数据设计
 - [ ] 缓存设计
 
 # References
